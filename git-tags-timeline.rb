@@ -7,24 +7,20 @@ require 'date'
 ## Usage:
 ##    from a git repository run
 ##       ruby git-tags-timeline.rb
-## 
 
 
 # TagInfo class.
 # parses a 'git show <tag>' output and figures out various things
-# right now only extracts tag, tagger and tagdate properties
+
 class TagInfo
   attr_accessor :tag, :taginfo, :tag_type, :tagger, :tagdate, :commit, :commit_author, :commit_date, :commit_comment
 
-  # takes 'git show <tag>' output
   def initialize(tagname)
-
     @tag = tagname
     @taginfo = `git show #{@tag}`
 
     lines = @taginfo.split("\n")
     #puts lines
-
 
     i = 0
     # if the first line starts with 'tag' then it is an 'annotated' tag
@@ -62,7 +58,6 @@ class TagInfo
       #p words
       @tagdate = DateTime.parse(words[1].strip) if words.length == 2
     end
-    
   end
 
   def to_s
@@ -94,4 +89,5 @@ tags.sort! do |a,b|
   a.tagdate <=> b.tagdate
 end
 
+# display sorted tags
 tags.each {|t| puts t}
