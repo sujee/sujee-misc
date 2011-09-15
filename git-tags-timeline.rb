@@ -58,6 +58,19 @@ class TagInfo
       #p words
       @tagdate = DateTime.parse(words[1].strip) if words.length == 2
     end
+
+    # if we don't have commit yet, go find it
+    unless @commit
+      while (! lines[i].start_with? 'commit ') do
+        #puts "lines[#{i}]: #{lines[i]}"
+        i += 1
+      end
+      if lines[i].start_with? 'commit '
+        words = lines[i].split('commit')
+        #p words
+        @commit = words[1].strip  if words.length == 2
+      end
+    end
   end
 
   def to_s
