@@ -1,0 +1,8 @@
+This project is a placeholder for misc. scripts and utilities I have written, that may be useful to others.
+
+Contents:
+
+* git-tags-timeline.rb
+    ruby script to display tags from a git repository in chronological order.  
+    
+    Wrote this to figure out release history of Apache Hadoop project
