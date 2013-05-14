@@ -7,4 +7,5 @@ Contents:
     Wrote this to figure out release history of Apache Hadoop project
 
 * mongo-stats.php
-    script to print out some stats for mongodb
+    script to print out some stats for mongodb.
+    It prints collections and indexes in the order of their size - largest to smallest.
